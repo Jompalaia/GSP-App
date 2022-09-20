@@ -1,6 +1,9 @@
 package com.example.notespro;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 
+import com.example.notespro.databinding.ActivityMainBinding;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,35 +21,37 @@ import com.google.firebase.firestore.Query;
 
 public class MainActivity extends AppCompatActivity {
 
-    FloatingActionButton addNoteBtn;
-    RecyclerView recyclerView;
     ImageButton menuBtn;
-    NoteAdapter noteAdapter;
-
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        replaceFragment(new HomeFragment());
 
-        addNoteBtn = findViewById(R.id.add_note_btn);
-        recyclerView = findViewById(R.id.recycler_view);
-        menuBtn = findViewById(R.id.menu_btn);
+        binding.bottomNavigationView2.setOnItemSelectedListener(item -> {
+            switch(item.getItemId()) {
 
-        addNoteBtn.setOnClickListener((v)-> startActivity(new Intent(MainActivity.this, NoteDetailsActivity.class)));
-        menuBtn.setOnClickListener((v)->showMenu());
+                case R.id.home:             replaceFragment(new HomeFragment());    break;
+                case R.id.search:           replaceFragment(new SearchFragment());  break;
+                case R.id.compare:          replaceFragment(new CompareFragment()); break;
+                case R.id.list_bulleted:    replaceFragment(new ListFragment());    break;
+            }
+            return true;
+        });
 
-        setupRecyclerView();
+        //menuBtn.setOnClickListener((v)->showMenu());
     }
 
-    void showMenu(){
+  /*  void showMenu() {
         PopupMenu popupMenu = new PopupMenu(MainActivity.this,menuBtn);
         popupMenu.getMenu().add("Logout");
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-
                 if(menuItem.getTitle()=="Logout"){
                     FirebaseAuth.getInstance().signOut();
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
@@ -55,32 +61,27 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-    }
+    } */
 
-    void setupRecyclerView(){
-        Query query = Utility.getCollectionReferenceForNotes().orderBy("timestamp",Query.Direction.DESCENDING);
-        FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>()
-                .setQuery(query,Note.class).build();
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        noteAdapter = new NoteAdapter(options,this);
-        recyclerView.setAdapter(noteAdapter);
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout, fragment);
+        fragmentTransaction.commit();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        noteAdapter.startListening();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        noteAdapter.stopListening();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        noteAdapter.notifyDataSetChanged();
     }
 }

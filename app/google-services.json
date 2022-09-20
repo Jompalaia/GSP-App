@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "541926775007",
-    "project_id": "notes-pro-9e34c",
-    "storage_bucket": "notes-pro-9e34c.appspot.com"
+    "project_number": "641925523177",
+    "firebase_url": "https://grocery-price-tracker-a655d-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "grocery-price-tracker-a655d",
+    "storage_bucket": "grocery-price-tracker-a655d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:541926775007:android:0ce01752224e3e4a48316a",
+        "mobilesdk_app_id": "1:641925523177:android:b579c2c7d3c3a1814f7278",
         "android_client_info": {
           "package_name": "com.example.notespro"
         }
       },
       "oauth_client": [
         {
-          "client_id": "541926775007-3h417t8a6fp9v8hrr449060uetfg0gh9.apps.googleusercontent.com",
+          "client_id": "641925523177-kaelekcd0idhut6im2d7otg3plt4btmg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAXlQXUKi7ZMIZoGXKvKEBBPrZHTBynqXE"
+          "current_key": "AIzaSyBgSQ17MI3UohfWySLKVnDBESoTdeQJl5c"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "541926775007-3h417t8a6fp9v8hrr449060uetfg0gh9.apps.googleusercontent.com",
+              "client_id": "641925523177-kaelekcd0idhut6im2d7otg3plt4btmg.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

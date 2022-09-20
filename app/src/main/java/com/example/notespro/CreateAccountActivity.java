@@ -63,10 +63,11 @@ public class CreateAccountActivity extends AppCompatActivity {
                         changeInProgress(false);
                         if(task.isSuccessful()){
                             //creating account is done
+                            System.out.print("Skapat ett konto");
                             Utility.showToast(CreateAccountActivity.this, "Successfully create account, Check email to verify");
                             firebaseAuth.getCurrentUser().sendEmailVerification();
                             firebaseAuth.signOut();
-                        }else{
+                        }else {
                             //failure
                             Utility.showToast(CreateAccountActivity.this, task.getException().getLocalizedMessage());
                         }
@@ -76,29 +77,27 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     void changeInProgress(boolean inProgress){
-        if(!inProgress){
+        if(!inProgress) {
             progressBar.setVisibility(View.VISIBLE);
             createAccountBtn.setVisibility(View.GONE);
-        }else{
+        }else {
             progressBar.setVisibility(View.GONE);
             createAccountBtn.setVisibility(View.VISIBLE);
         }
-
-
     }
 
-    boolean validateData(String email, String password, String confirmPassword){
+    boolean validateData(String email, String password, String confirmPassword) {
         //Validate the data from the user
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             emailEditText.setError("Email is invalid");
             return false;
         }
-        if(password.length()<6){
+        if(password.length()<6) {
             passwordEditText.setError("Password too short");
             return false;
         }
-        if(!password.equals(confirmPassword)){
+        if(!password.equals(confirmPassword)) {
             confirmPasswordEditText.setError("The passwords do not match");
             return false;
         }

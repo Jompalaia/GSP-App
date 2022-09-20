@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         createAccountBtnTextView.setOnClickListener((v)-> startActivity(new Intent(LoginActivity.this, CreateAccountActivity.class)));
     }
 
-    void loginUser(){
+    void loginUser() {
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
 
@@ -60,40 +60,42 @@ public class LoginActivity extends AppCompatActivity {
                 changeInProgress(false);
                 if(task.isSuccessful()){
                     //Login was successful
-                    if(firebaseAuth.getCurrentUser().isEmailVerified()){
+                    if(firebaseAuth.getCurrentUser().isEmailVerified()) {
                         //Go to main activity
+                        System.out.println("Login was succesful");
                         startActivity(new Intent(LoginActivity.this,MainActivity.class));
                         finish();
-                    }else{
+                    }else {
                         Utility.showToast(LoginActivity.this, "Email not verified, Please verify your email.");
                     }
 
-                }else{
+                }else {
                     //Login failed
+                    System.out.println("Login failed...");
                     Utility.showToast(LoginActivity.this, task.getException().getLocalizedMessage());
                 }
             }
         });
     }
 
-    void changeInProgress(boolean inProgress){
-        if(!inProgress){
+    void changeInProgress(boolean inProgress) {
+        if(!inProgress) {
             progressBar.setVisibility(View.VISIBLE);
             loginBtn.setVisibility(View.GONE);
-        }else{
+        }else {
             progressBar.setVisibility(View.GONE);
             loginBtn.setVisibility(View.VISIBLE);
         }
     }
 
-    boolean validateData(String email, String password){
+    boolean validateData(String email, String password) {
         //Validate the data from the user
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             emailEditText.setError("Email is invalid");
             return false;
         }
-        if(password.length()<6){
+        if(password.length()< 6) {
             passwordEditText.setError("Password too short");
             return false;
         }
