@@ -9,6 +9,9 @@
         <entry key="..\:/Users/gabri/AndroidStudioProjects/GSP_APP/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/GSP_APP/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/GSP_APP/app/src/main/res/layout/grocery_list.xml" value="0.25" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/GSP_APP/app/src/main/res/layout/grocery_list_details.xml" value="0.25" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/GSP_APP/app/src/main/res/layout/search_prices.xml" value="0.25" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/GSP_APP/app/src/main/res/layout/search_stores.xml" value="0.25" />
       </map>
     </option>
   </component>
