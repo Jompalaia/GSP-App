@@ -62,7 +62,6 @@ public class LoginActivity extends AppCompatActivity {
                     //Login was successful
                     if(firebaseAuth.getCurrentUser().isEmailVerified()) {
                         //Go to main activity
-                        System.out.println("Login was succesful");
                         startActivity(new Intent(LoginActivity.this,MainActivity.class));
                         finish();
                     }else {

@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 
@@ -21,7 +23,6 @@ import com.google.firebase.firestore.Query;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageButton menuBtn;
     ActivityMainBinding binding;
 
     @Override
@@ -34,35 +35,18 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNavigationView2.setOnItemSelectedListener(item -> {
             switch(item.getItemId()) {
 
-                case R.id.home:             replaceFragment(new HomeFragment());    break;
-                case R.id.search:           replaceFragment(new SearchFragment());  break;
-                case R.id.compare:          replaceFragment(new CompareFragment()); break;
-                case R.id.list_bulleted:    replaceFragment(new ListFragment());    break;
+                case R.id.home:            replaceFragment(new HomeFragment());    break;
+                case R.id.search:          replaceFragment(new SearchFragment());  break;
+                case R.id.compare:         replaceFragment(new CompareFragment()); break;
+                case R.id.list_bulleted:   replaceFragment(new ListFragment());    break;
             }
             return true;
         });
 
-        //menuBtn.setOnClickListener((v)->showMenu());
     }
 
-  /*  void showMenu() {
-        PopupMenu popupMenu = new PopupMenu(MainActivity.this,menuBtn);
-        popupMenu.getMenu().add("Logout");
-        popupMenu.show();
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                if(menuItem.getTitle()=="Logout"){
-                    FirebaseAuth.getInstance().signOut();
-                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                    finish();
-                    return true;
-                }
-                return false;
-            }
-        });
-    } */
 
+    /* Switchar till en ny sida när man klickar på alternativen i menyn längst ner */
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
