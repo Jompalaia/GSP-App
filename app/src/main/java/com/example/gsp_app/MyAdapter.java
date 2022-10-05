@@ -35,7 +35,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
         Products product = productsArrayList.get(position);
 
+        holder.kategori.setText(product.kategori);
         holder.name.setText(product.offer);
+        holder.pre.setText(product.pre);
         holder.price.setText(product.price);
         holder.store.setText(product.store);
 
@@ -48,11 +50,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView name, price, store;
+        TextView name, price, store, pre, kategori;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            kategori = itemView.findViewById(R.id.product_kategori);
             name = itemView.findViewById(R.id.product_name);
+            pre = itemView.findViewById(R.id.product_pre);
             price = itemView.findViewById(R.id.product_price);
             store = itemView.findViewById(R.id.product_store);
         }

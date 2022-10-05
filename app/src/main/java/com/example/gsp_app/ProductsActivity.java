@@ -52,7 +52,91 @@ public class ProductsActivity extends AppCompatActivity {
 
     private void EventChangeListener() {
 
-        db.collection("coop").orderBy("offer", Query.Direction.ASCENDING)
+        db.collection("coop kronoparken").orderBy("price", Query.Direction.ASCENDING)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                        if (error != null){
+
+                            if(progressDialog.isShowing())
+                                progressDialog.dismiss();
+
+                            Log.e("Firestore error!",error.getMessage());
+                            return;
+                        }
+
+                        for (DocumentChange dc: value.getDocumentChanges()){
+                            if (dc.getType() == DocumentChange.Type.ADDED){
+                                productsArrayList.add(dc.getDocument().toObject(Products.class));
+                            }
+
+                            myAdapter.notifyDataSetChanged();
+                            if(progressDialog.isShowing())
+                                progressDialog.dismiss();
+
+                        }
+
+                    }
+                });
+
+        db.collection("coop välsviken").orderBy("price", Query.Direction.ASCENDING)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                        if (error != null){
+
+                            if(progressDialog.isShowing())
+                                progressDialog.dismiss();
+
+                            Log.e("Firestore error!",error.getMessage());
+                            return;
+                        }
+
+                        for (DocumentChange dc: value.getDocumentChanges()){
+                            if (dc.getType() == DocumentChange.Type.ADDED){
+                                productsArrayList.add(dc.getDocument().toObject(Products.class));
+                            }
+
+                            myAdapter.notifyDataSetChanged();
+                            if(progressDialog.isShowing())
+                                progressDialog.dismiss();
+
+                        }
+
+                    }
+                });
+
+        db.collection("ica").orderBy("price", Query.Direction.ASCENDING)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                        if (error != null){
+
+                            if(progressDialog.isShowing())
+                                progressDialog.dismiss();
+
+                            Log.e("Firestore error!",error.getMessage());
+                            return;
+                        }
+
+                        for (DocumentChange dc: value.getDocumentChanges()){
+                            if (dc.getType() == DocumentChange.Type.ADDED){
+                                productsArrayList.add(dc.getDocument().toObject(Products.class));
+                            }
+
+                            myAdapter.notifyDataSetChanged();
+                            if(progressDialog.isShowing())
+                                progressDialog.dismiss();
+
+                        }
+
+                    }
+                });
+
+        db.collection("lidl").orderBy("price", Query.Direction.ASCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {

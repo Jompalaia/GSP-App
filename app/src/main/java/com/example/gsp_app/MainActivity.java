@@ -19,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        /*Intent intent = new Intent(MainActivity.this, ProductsActivity.class);
-        startActivity(intent);*/
-        replaceFragment(new HomeFragment());
+        Intent intent = new Intent(MainActivity.this, ProductsActivity.class);
+        startActivity(intent);
+        /*replaceFragment(new HomeFragment());
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
             return true;
-        });
+        });*/
     }
 
     private void replaceFragment(Fragment fragment){

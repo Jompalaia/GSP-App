@@ -24,9 +24,37 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Category:"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_kategori"
+                android:layout_marginStart="8sp"
+                android:text="Mat"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Product:"
                 android:textColor="@color/black"
-                android:textSize="23sp"
+                android:textSize="18sp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -36,7 +64,7 @@
                 android:layout_marginStart="8dp"
                 android:text="Egg"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
 
         </LinearLayout>
 
@@ -52,8 +80,17 @@
                 android:layout_height="wrap_content"
                 android:text="Price:"
                 android:textColor="@color/black"
-                android:textSize="23sp"
+                android:textSize="18sp"
                 android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_pre"
+                android:layout_marginStart="8dp"
+                android:text="2 för"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -62,7 +99,7 @@
                 android:layout_marginStart="8dp"
                 android:text="50 kr"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
 
         </LinearLayout>
 
@@ -77,20 +114,19 @@
                 android:layout_height="wrap_content"
                 android:text="Store:"
                 android:textColor="@color/black"
-                android:textSize="23sp"
+                android:textSize="18sp"
                 android:textStyle="bold"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/product_store"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="8sp"
                 android:text="Lidl"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
 
         </LinearLayout>
-
 
     </LinearLayout>
         
